@@ -1,0 +1,112 @@
+Explicación del Código
+Función loadRanking
+cpp
+Copiar código
+
+
+std::vector<Player> loadRanking(const std::string& nombre_de_archivo) {
+    std::vector<Player> clasificación;
+    std::ifstream archivo(nombre_de_archivo);
+    if (!archivo.is_open()) {
+        std::cerr << "Error al abrir el archivo " << nombre_de_archivo << std::endl;
+        return clasificación;
+    }
+    Player jugador;
+    while (archivo >> jugador.nombre >> jugador.puntuación) {
+        clasificación.push_back(jugador);
+    }
+    archivo.close();
+    return clasificación;
+}
+
+
+Objetivo: Cargar un ranking de jugadores desde un archivo.
+Parámetros: nombre_de_archivo, nombre del archivo desde el cual se cargará la clasificación.
+Salida: Un std::vector<Player> que contiene todos los jugadores y sus puntuaciones leídos desde el archivo.
+Proceso:
+Abre el archivo especificado.
+Si no se puede abrir, muestra un mensaje de error y retorna una lista vacía.
+Lee cada jugador desde el archivo y lo añade al vector clasificación.
+Cierra el archivo y retorna la clasificación.
+
+Función saveRanking
+cpp
+Copiar código
+
+
+void saveRanking(const std::vector<Player>& clasificación, const std::string& nombre_de_archivo) {
+    std::ofstream archivo(nombre_de_archivo);
+    if (!archivo.is_open()) {
+        std::cerr << "Error al abrir el archivo " << nombre_de_archivo << std::endl;
+        return;
+    }
+    for (const auto& jugador : clasificación) {
+        archivo << jugador.nombre << " " << jugador.puntuación << std::endl;
+    }
+    archivo.close();
+}
+
+Objetivo: Guardar un ranking de jugadores en un archivo.
+Parámetros:
+clasificación, un vector de jugadores.
+nombre_de_archivo, el nombre del archivo donde se guardará la clasificación.
+Salida: Ninguna.
+Proceso:
+Abre el archivo para escritura.
+Si no se puede abrir, muestra un mensaje de error y retorna.
+Escribe cada jugador en el archivo en formato "nombre puntuación".
+Cierra el archivo.
+
+Función on_ranking_button_clicked
+cpp
+Copiar código
+
+void on_ranking_button_clicked(GtkWidget *widget, gpointer datos) {
+    std::vector<Player> clasificación = loadRanking("ranking.txt");
+    std::sort(clasificación.begin(), clasificación.end(), [](const Player& a, const Player& b) {
+        return a.puntuación > b.puntuación;
+    });
+
+    int numPlayersToShow = std::min(10, static_cast<int>(clasificación.size()));
+
+    GtkWidget *diálogo = gtk_dialog_new_with_buttons("Clasificación", NULL, GTK_DIALOG_MODAL, "Cerrar", GTK_RESPONSE_NONE, NULL);
+    gtk_window_set_default_size(GTK_WINDOW(diálogo), 800, 600);
+    GtkWidget *área_contenido = gtk_dialog_get_content_area(GTK_DIALOG(diálogo));
+
+    GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10);
+    gtk_container_add(GTK_CONTAINER(área_contenido), vbox);
+
+    GtkWidget *title_label = gtk_label_new(NULL);
+    gtk_label_set_markup(GTK_LABEL(title_label), "<span font_desc='24' color='blue'><b>Clasificación</b></span>");
+    gtk_widget_set_halign(title_label, GTK_ALIGN_START);
+    gtk_box_pack_start(GTK_BOX(vbox), title_label, FALSE, FALSE, 0);
+
+    for (int i = 0; i < numPlayersToShow; ++i) {
+        std::string rankingText = std::to_string(i + 1) + ". " + clasificación[i].nombre + " - " + std::to_string(clasificación[i].puntuación);
+        GtkWidget *rank_label = gtk_label_new(NULL);
+        gtk_label_set_text(GTK_LABEL(rank_label), rankingText.c_str());
+
+        PangoAttrList *attr_list = pango_attr_list_new();
+        PangoAttribute *attr_size = pango_attr_size_new(18 * PANGO_SCALE);
+        PangoAttribute *attr_color = pango_attr_foreground_new(65535, 42405, 0);
+        pango_attr_list_insert(attr_list, attr_size);
+        pango_attr_list_insert(attr_list, attr_color);
+        gtk_label_set_attributes(GTK_LABEL(rank_label), attr_list);
+        pango_attr_list_unref(attr_list);
+
+        gtk_widget_set_halign(rank_label, GTK_ALIGN_START);
+        gtk_box_pack_start(GTK_BOX(vbox), rank_label, FALSE, FALSE, 0);
+    }
+
+    gtk_widget_show_all(diálogo);
+    gtk_dialog_run(GTK_DIALOG(diálogo));
+    gtk_widget_destroy(diálogo);
+}
+
+Objetivo: Mostrar la clasificación de jugadores en una ventana de diálogo de GTK.
+Proceso:
+Carga la clasificación de jugadores desde el archivo ranking.txt.
+Ordena a los jugadores por su puntuación en orden descendente.
+Crea un diálogo para mostrar la clasificación.
+Añade etiquetas al diálogo para mostrar el nombre y la puntuación de los primeros 10 jugadores.
+Muestra el diálogo y espera a que el usuario lo cierre
