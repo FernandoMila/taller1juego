@@ -1,0 +1,58 @@
+Propuesta Didáctica para "En Busca de Carmen Sandiego: Aventura en Colonia"
+Objetivos Educativos
+Familiarizar a los jugadores con las características particulares de los lugares del departamento de Colonia, Uruguay.
+Enseñar aspectos históricos y culturales importantes de cada localidad.
+Fomentar la resolución de problemas a través de pistas y desafíos que incentiven el pensamiento crítico.
+Estructura del juego
+Introducción
+El juego comienza con una breve historia: Carmen Sandiego ha robado un valioso libro de la biblioteca del CERPSW en Colonia del Sacramento.
+El jugador asume el papel de un detective que debe recuperar el libro viajando por diferentes localidades del departamento de Colonia.
+Mapa Interactivo
+El jugador ve una figura distintiva de las diferentes localidades del departamento de Colonia como, por ejemplo: Colonia del Sacramento, Tarariras, Carmelo, Rosario, Juan Lacaze, Nueva Helvecia, Nueva Palmira, entre otras.
+El jugador accede a la información y a las pistas de la próxima localidad  que deberá ir buscando a Carmen Sandiego.
+
+3. Exploración de la Ciudad
+Cada localidad  tiene una ventana con información histórica y cultural, incluyendo textos e  imágenes
+Los jugadores pueden explorar diferentes aspectos de la localidad monumentos, tradiciones, gastronomía, entre otros motivados por las pistas dadas.
+Desafíos y Pistas
+En cada localidad , el jugador debe resolver desafíos basados en las características particulares  lo que permitirá avanzar. Estos pueden incluir:
+Pistas en la cual el jugador optará por una de las opciones dadas para poder seguir avanzando.
+Al resolver cada desafío, el jugador recibe una pista sobre el próximo lugar a descubrir.
+
+Progreso y retroalimentación
+Los jugadores reciben retroalimentación inmediata sobre su desempeño en los desafíos.
+Un sistema de puntuación motiva a los jugadores a aprender y completar los desafíos.
+Se muestra un registro del progreso del jugador al finalizar destacando sus avances.
+
+ 5. Conclusión
+Una vez que el jugador ha visitado todas las localidades y resuelto todos los desafíos, recibe la ubicación final de Carmen Sandiego atrapando a la misma.
+El juego culmina con la recuperación del libro robado 
+Aspectos Didácticos
+Aprendizaje Activo
+Los jugadores interactúan con el contenido educativo a través de pistas  que lo llevan  por diferentes caminos del Departamento de Colonia.
+Contexto Local
+El contenido se centra en el Departamento de Colonia, lo que lo hace relevante y significativo para los estudiantes de la región, lo que fue solicitado por el cliente oriundo  del departamento.
+Multimedia
+El uso de textos e imágenes enriquece la experiencia de aprendizaje y atiende a diferentes estilos de aprendizaje.
+Evaluación Formativa
+La retroalimentación inmediata y el sistema de puntuación proporcionan una evaluación formativa, ayudando a los jugadores a mejorar continuamente.
+Colaboración y Competencia Amigable
+Los jugadores pueden compartir su progreso y evaluación con amigos y compañeros, fomentando la colaboración y una competencia amigable.
+Plan de Implementación
+Investigación y Recolección de Contenidos
+Recopilar información histórica y cultural sobre cada localidad  del Departamento de Colonia.
+Crear pistas desde los  desafíos educativos basados ​​en estos contenidos.
+Se utilizan entrevistas a lugareños, se visita documentación  digital.
+Diseño y Desarrollo del Juego
+Diseñar la interfaz de usuario y la experiencia de juego.
+Desarrollar las funcionalidades del juego en C++ usando la biblioteca GTKmm.
+Implementar los desafíos y el sistema de pistas.
+Pruebas y comentarios
+Probar el juego con los integrantes del grupo para recoger su retroalimentación.
+Ajustar y mejorar el juego en función de la retroalimentación recibida.
+
+
+
+Lanzamiento y Evaluación
+Lanzar el juego y promover su uso en escuelas y comunidades locales.
+Evaluar el impacto educativo del juego a través de encuestas y análisis de datos de uso.
